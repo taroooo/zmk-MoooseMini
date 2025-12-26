@@ -71,6 +71,15 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+        mouse_layer_tap: mouse_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOUSE_LAYER_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&mkp>;
+        };
         rot_kp: sensor_rotate_kp {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
@@ -93,10 +102,10 @@
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
-                &kp C_MUTE                &lt_to_layer_0 1 ESC
-                &mkp LCLK   &mkp RCLK     &lt_to_layer_0 2 ENTER
-                &mkp MCLK   &kp BACKSPACE &lt_to_layer_0 3 SPACE
-                                          &lt_to_layer_0 4 ESC
+                &kp C_MUTE                     &mouse_layer_tap 1 MCLK
+                &mkp LCLK   &mkp RCLK          &lt_to_layer_0 2 ENTER
+                &mkp MCLK   &kp BACKSPACE      &lt_to_layer_0 3 SPACE
+                                               &lt_to_layer_0 4 ESC
             >;
             sensor-bindings = <&mouse_scroll SCRL_DOWN SCRL_UP>;
         };
